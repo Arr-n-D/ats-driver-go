@@ -13,7 +13,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/kbinani/screenshot"
+	// "github.com/kbinani/screenshot"
+	"github.com/vova616/screenshot"
 	"gocv.io/x/gocv"
 )
 
@@ -23,13 +24,13 @@ func main() {
 	window := gocv.NewWindow("Game window")
 	last_time := time.Now()
 	for {
-		bounds := screenshot.GetDisplayBounds(0)
-		img, err := screenshot.CaptureRect(bounds)
+		img, err := screenshot.CaptureScreen()
+		
 		if err != nil {
 			panic(err)
 		}
 
-		newImg, err := gocv.ImageToMatRGB(img)
+		newImg, err := gocv.ImageToMatRGBA(img)
 		if err != nil {
 			panic(err)
 		}
